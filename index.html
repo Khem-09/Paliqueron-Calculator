@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+</head>
+<body style="background-color: whitesmoke">
+    <section class="d-flex justify-content-center align-items-center vh-100"> 
+        <div class="m-4 card p-4 shadow" style="background-color: hsl(240, 4%, 52%);" style="width: 400px; height: 400px;">
+        <h1 class="d-flex justify-content-center"style="font-family:Arial font: width 3em">CALCULATOR</h1>
+        <div>
+            <label for="num_1">Number 1</label><br>
+            <input type="number" name="num1" id="num1" required>
+        </div>
+        <div>
+            <label for="num_2">Number 2</label><br>
+            <input type="number" name="num2" id="num2" required>
+        </div>
+        <div>
+            <label for="operator" class="form-label">Operator</label required><br>
+            <select class="form-label" id="operator" name=""operator>
+                <option value="add">+</option>
+                <option value="subtract">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-center m-1">
+            <label for="result"class="m-1">Result</label>
+            <input type="number" name="result" id="result" disabled >
+        </div>
+        <div class="d-flex justify-content-center m-1">
+            <button id="compute"><span>Compute</span></button>
+        </div>
+    </section>
+    <script>
+        document.getElementById('compute').addEventListener('click', () => {
+          const num1 = parseFloat(document.getElementById('num1').value);
+          const num2 = parseFloat(document.getElementById('num2').value);
+          const operation = document.getElementById('operator').value;
+          let result = '';
+    
+          if (isNaN(num1) || isNaN(num2)) {
+            result = "Please enter valid numbers";
+          } else {
+            switch (operation) {
+              case 'add':
+                result = num1 + num2;
+                break;
+              case 'subtract':
+                result = num1 - num2;
+                break;
+              case 'multiply':
+                result = num1 * num2;
+                break;
+              case 'divide':
+                result = num2 !== 0 ? (num1 / num2).toFixed(2) : 'Cannot divide by 0';
+                break;
+            }
+          }
+          document.getElementById('result').value = result;
+        });
+      </script>
+</body>
+</html>
+
+
+
+
+
